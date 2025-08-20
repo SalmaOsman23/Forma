@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forma/Features/chatbot/presentation/bloc/chatbot_cubit.dart';
 import 'package:forma/Features/chatbot/presentation/screens/chat_bot_screen.dart';
 import 'package:forma/Features/home/presentation/screens/home_screen.dart';
 import 'package:forma/Features/progress/presentation/screens/progress_screen.dart';
@@ -20,7 +22,10 @@ class HomeLayoutState extends State<HomeLayout> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const ProgressScreen(),
-    const ChatBotScreen(),
+    BlocProvider(
+      create: (context) => ChatbotCubit(),
+      child: const ChatBotScreen(),
+    ),
     const SettingsScreen(),
   ];
 
