@@ -9,6 +9,10 @@ class AppStrings {
   static const String improveFlexibilityAndStabilityWithGuidedExercises = "Improve flexibility and stability with guided exercises.";
   static const String boostYourEnergy = "Boost Your Energy";
   static const String stayActiveAndEnergizedWithPersonalizedCardioSessions = "Stay active and energized with personalized cardio sessions.";
+  static const String welcomeToForma = "Welcome to Forma";
+  static const String yourPersonalFitnessCompanion = "Your personal fitness companion";
+  static const String letStart = "Let's Start";
+
   
   
 }

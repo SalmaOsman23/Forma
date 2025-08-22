@@ -27,8 +27,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
+  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^5.0.0
 
 
@@ -40,5 +40,37 @@ flutter:
  
   assets:
     - assets/images/
+
+# Flutter Native Splash configuration
+flutter_native_splash:
+  # Image to display on the splash screen
+  image: assets/images/no_background_logo.png
+  
+  # Color of the image (if it's a monochrome image)
+  color: "#FFFFFF"
+  
+  # Platform-specific configurations
+  android_12:
+    image: assets/images/no_background_logo.png
+    color: "#2563EB"
+  
+  # iOS configuration
+  ios: true
+  
+  # Web configuration
+  web: false
+
+# Flutter Launcher Icons configuration
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/forma-logo-png.png"
+  min_sdk_android: 21
+  web:
+    generate: false
+  windows:
+    generate: false
+  macos:
+    generate: false
 
 

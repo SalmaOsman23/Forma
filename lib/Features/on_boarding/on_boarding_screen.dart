@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:forma/Features/welcome/welcome_screen.dart';
 import 'package:forma/core/components/primary_button.dart';
+import 'package:forma/core/layouts/home_layout.dart';
 import 'package:forma/core/utils/app_assets.dart';
 import 'package:forma/core/utils/app_strings.dart';
 import 'package:forma/core/utils/app_styles.dart';
@@ -122,7 +123,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           title: _currentPage == 2 ? AppStrings.getStarted : AppStrings.next,
           onPressed: () {
             if (_currentPage == 2) {
-              // Navigate to WelcomeScreen
               Get.offAll(() => const WelcomeScreen());
             } else {
               // Go to the next page
