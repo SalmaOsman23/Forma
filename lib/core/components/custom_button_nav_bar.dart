@@ -50,19 +50,15 @@ class CustomBottomNavbar extends StatelessWidget {
       }
     }
     
-    // Add bottom padding for devices with home indicators
     final totalHeight = navbarHeight + bottomPadding;
     
-    // Adjust padding based on orientation and screen size
     double horizontalPadding;
     double verticalPadding;
     
     if (isLandscape) {
-      // Very compact padding for landscape
       horizontalPadding = isLargeScreen ? 15.w : 8.w;
       verticalPadding = 1.h;
     } else {
-      // Portrait padding
       horizontalPadding = isLargeScreen ? 25.w : 15.w;
       verticalPadding = isSmallScreen ? 4.h : 6.h;
     }

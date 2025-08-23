@@ -186,7 +186,7 @@ class _BottomIconState extends State<BottomIcon>
                       height: iconSize,
                       color: widget.isSelected 
                           ? Theme.of(context).colorScheme.primary 
-                          : Theme.of(context).colorScheme.surfaceContainerHighest,
+                          : Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                   SizedBox(height: iconLabelSpacing),
@@ -203,7 +203,7 @@ class _BottomIconState extends State<BottomIcon>
                             : FontWeight.w400,
                         color: widget.isSelected 
                               ? Theme.of(context).colorScheme.primary 
-                              : Theme.of(context).colorScheme.surfaceContainerHighest,
+                              : Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                       textAlign: TextAlign.center,
                       maxLines: 1,

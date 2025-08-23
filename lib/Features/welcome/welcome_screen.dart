@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:forma/core/utils/app_strings.dart';
 import '../../../core/components/primary_button.dart';
 import '../../../core/utils/app_assets.dart';
-import '../../../core/theme/app_theme.dart';
 import '../../../core/layouts/home_layout.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -12,8 +11,11 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
     return Scaffold(
-      backgroundColor: FormaColors.background,
+      backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -38,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                 AppStrings.welcomeToForma,
                 style: TextStyle(
                   fontSize: 32.sp,
-                  color: FormaColors.textPrimary,
+                  color: colorScheme.onBackground,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -50,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                 AppStrings.yourPersonalFitnessCompanion,
                 style: TextStyle(
                   fontSize: 18.sp,
-                  color: FormaColors.textSecondary,
+                  color: colorScheme.onSurfaceVariant,
                   fontWeight: FontWeight.w400,
                   height: 1.4,
                 ),
@@ -70,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-                buttonColor: FormaColors.primary,
+                buttonColor: colorScheme.primary,
               ),
               
               SizedBox(height: 40.h),
