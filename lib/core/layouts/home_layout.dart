@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forma/Features/chatbot/presentation/bloc/chatbot_cubit.dart';
 import 'package:forma/Features/chatbot/presentation/screens/chat_bot_screen.dart';
+import 'package:forma/Features/home/presentation/bloc/home_cubit.dart';
 import 'package:forma/Features/home/presentation/screens/home_screen.dart';
 import 'package:forma/Features/progress/presentation/screens/progress_screen.dart';
 import 'package:forma/Features/settings/presentation/screens/settings_screen.dart';
@@ -20,7 +21,10 @@ class HomeLayout extends StatefulWidget {
 class HomeLayoutState extends State<HomeLayout> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
-    const HomeScreen(),
+    BlocProvider(
+      create: (context) => HomeCubit(),
+      child: const HomeScreen(),
+    ),
     const ProgressScreen(),
     BlocProvider(
       create: (context) => ChatbotCubit(),
@@ -71,39 +75,5 @@ class HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-// Helper function to get the icon name based on the index
-  String _getIconForIndex(int index) {
-    switch (index) {
-      case 0:
-        return AppAssets.homeSvgIcon;
-      // case 1:
-      //   return AppIcons.browse; // Browse tab commented out
-      case 1:
-        return AppAssets.progressSvgIcon;
-      case 2:
-        return AppAssets.chatSvgIcon;
-      case 3:
-        return AppAssets.settingsSvgIcon;
-      default:
-        return AppAssets.homeSvgIcon; // Default icon
-    }
-  }
 
-// Helper function to get the label for the index
-  String _getLabelForIndex(int index) {
-    switch (index) {
-      case 0:
-        return 'Home';
-      // case 1:
-      //   return 'Browse'; // Browse tab commented out
-      case 1:
-        return 'Progress';
-      case 2:
-        return 'Chat';
-      case 3:
-        return 'Settings';
-      default:
-        return 'Unknown'; // Default label
-    }
-  }
 }
