@@ -126,11 +126,6 @@ class _ProgressScreenState extends State<ProgressScreen> {
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _isRefreshing ? null : _refreshData,
-            tooltip: AppStrings.refreshData,
-          ),
           if (_loggedExercises.isNotEmpty)
             IconButton(
               icon: const Icon(Icons.clear_all),
@@ -473,7 +468,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
           ),
         ),
         SizedBox(
-          height: 50,
+          height: 45,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
@@ -484,12 +479,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
                                (category == 'All Categories' && _selectedCategory == null);
               
               return Container(
-                margin: const EdgeInsets.only(right: 12),
+                margin: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () => _applyCategoryFilter(category == 'All Categories' ? null : category),
                   borderRadius: BorderRadius.circular(25),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     decoration: BoxDecoration(
                       color: isSelected 
                           ? Theme.of(context).primaryColor
@@ -499,14 +494,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
                         color: isSelected 
                             ? Theme.of(context).primaryColor
                             : _getCategoryColor(category).withOpacity(0.3),
-                        width: 2,
+                        width: 1.5,
                       ),
                     ),
                     child: Text(
                       category,
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                         color: isSelected 
                             ? Colors.white
                             : _getCategoryColor(category),
