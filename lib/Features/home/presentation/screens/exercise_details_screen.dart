@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:forma/Features/home/data/models/exercise.dart';
 import 'package:forma/Features/home/data/models/logged_exercise.dart';
 import 'package:forma/Features/chatbot/data/exercise_api_service.dart';
+import 'package:forma/core/helpers/exercise_logger.dart';
 import 'package:intl/intl.dart';
 
 class ExerciseDetailsScreen extends StatefulWidget {
@@ -349,9 +350,29 @@ class _MarkAsDoneModalState extends State<_MarkAsDoneModal> {
     setState(() => _isSaving = true);
 
     try {
-      // For now, we'll just show a success message
-      // In a real app, you'd save to a local database
-      await Future.delayed(const Duration(seconds: 1));
+      // Create exercise data to save
+      final exerciseData = {
+        'id': widget.exercise.id,
+        'name': widget.exercise.name,
+        'bodyPart': widget.exercise.bodyPart,
+        'equipment': widget.exercise.equipment,
+        'target': widget.exercise.target,
+        'gifUrl': widget.exercise.gifUrl,
+        'secondaryMuscles': widget.exercise.secondaryMuscles,
+        'instructions': widget.exercise.instructions,
+      };
+
+      // Combine selected date and time
+      final selectedDateTime = DateTime(
+        _selectedDate.year,
+        _selectedDate.month,
+        _selectedDate.day,
+        _selectedTime.hour,
+        _selectedTime.minute,
+      );
+
+      // Save exercise using ExerciseLogger with custom date
+      await ExerciseLogger.logExercise(exerciseData, customDate: selectedDateTime);
       
       if (mounted) {
         Navigator.pop(context);

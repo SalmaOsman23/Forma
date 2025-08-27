@@ -49,7 +49,13 @@ class _ExerciseFiltersWidgetState extends State<ExerciseFiltersWidget> {
     setState(() {
       _filters = newFilters;
     });
+    print('=== FILTER WIDGET ===');
     print('Filters updated: $newFilters');
+    print('Equipment: "${newFilters.equipment}"');
+    print('Target: "${newFilters.target}"');
+    print('Body Part: "${newFilters.bodyPart}"');
+    print('Has filters: ${newFilters.hasFilters}');
+    print('=== END FILTER WIDGET ===');
     widget.onFiltersChanged(newFilters);
   }
 

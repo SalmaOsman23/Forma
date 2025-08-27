@@ -7,6 +7,7 @@ class ApiHelper {
   static Future<http.Response> getData({
     required String url,
     Map<String, dynamic>? query,
+    Map<String, String>? customHeaders,
   }) async {
     var uRL = Uri.parse(url);
     
@@ -16,12 +17,15 @@ class ApiHelper {
       uRL = uRL.replace(queryParameters: queryParameters);
     }
     
+    // Use custom headers if provided, otherwise use default headers
+    final headers = customHeaders ?? {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+    
     return await _client.get(
       uRL,
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      },
+      headers: headers,
     );
   }
 

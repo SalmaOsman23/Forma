@@ -66,5 +66,25 @@ class AppStrings {
   static const String faqSixthAnswer = "Yes, you can customize your workout reminders. Simply navigate to the Settings tab and enable or disable workout reminders.";
   static const String faqSeventhAnswer = "If you have a fitness question, you can chat with our AI fitness assistant for personalized recommendations.";
   static const String faqEighthAnswer = "Simply navigate to the Settings tab and change the app theme to light or dark.";
+  static const String errorLoadingExercises = "Error loading exercises: ";
+  static const String clearAllLogs = "Clear All Logs";
+  static const String areYouSureYouWantToClearAllLogsThisActionCannotBeUndone = "Are you sure you want to clear all logs? This action cannot be undone.";
+  static const String cancel = "Cancel";
+  static const String clear = "Clear";
+  static const String allLogsClearedSuccessfully = "All logs cleared successfully";
+  static const String errorClearingLogs = "Error clearing logs: ";
+  static const String progressActivityLogging = "Progress (Activity Logging)";
+  static const String refreshData = "Refresh Data";
+  static const String noExercisesCompletedYet = "No exercises completed yet!";
+  static const String completeExercisesFromTheHomeScreenToSeeYourProgressHere = "Complete exercises from the home screen to see your progress here.";
+  static const String goToExercises = "Go to Exercises";
+  static const String completedExercises = "Completed Exercises";
+  static const String totalExercises = "Total Exercises";
+  static const String totalCompletions = "Total Completions";
+  static const String mostCompleted = "Most completed";
+  static const String times = "times";
+  static const String progressSummary = "Progress Summary";
+  static const String exercises = "Exercises";
+
   
 }

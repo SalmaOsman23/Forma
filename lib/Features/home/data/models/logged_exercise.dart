@@ -1,44 +1,58 @@
+import 'package:forma/Features/home/data/models/exercise.dart';
+
 class LoggedExercise {
   final String id;
-  final String exerciseId;
-  final String exerciseName;
+  final Exercise exercise;
   final DateTime date;
-  final DateTime time;
-  final int durationMinutes;
+  final int? sets;
+  final int? reps;
+  final double? weight;
+  final Duration? duration;
+  final String intensity;
+  final String? notes;
 
   LoggedExercise({
     required this.id,
-    required this.exerciseId,
-    required this.exerciseName,
+    required this.exercise,
     required this.date,
-    required this.time,
-    required this.durationMinutes,
+    this.sets,
+    this.reps,
+    this.weight,
+    this.duration,
+    required this.intensity,
+    this.notes,
   });
 
   factory LoggedExercise.fromJson(Map<String, dynamic> json) {
     return LoggedExercise(
       id: json['id'],
-      exerciseId: json['exerciseId'],
-      exerciseName: json['exerciseName'],
+      exercise: Exercise.fromJson(json['exercise']),
       date: DateTime.parse(json['date']),
-      time: DateTime.parse(json['time']),
-      durationMinutes: json['durationMinutes'],
+      sets: json['sets'],
+      reps: json['reps'],
+      weight: json['weight']?.toDouble(),
+      duration: json['duration'] != null ? Duration(minutes: json['duration']) : null,
+      intensity: json['intensity'] ?? 'moderate',
+      notes: json['notes'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'exerciseId': exerciseId,
-      'exerciseName': exerciseName,
+      'exercise': exercise.toJson(),
       'date': date.toIso8601String(),
-      'time': time.toIso8601String(),
-      'durationMinutes': durationMinutes,
+      'sets': sets,
+      'reps': reps,
+      'weight': weight,
+      'duration': duration?.inMinutes,
+      'intensity': intensity,
+      'notes': notes,
     };
   }
 
   @override
   String toString() {
-    return 'LoggedExercise(id: $id, exerciseName: $exerciseName, date: $date, duration: ${durationMinutes}min)';
+    return 'LoggedExercise(id: $id, exercise: ${exercise.name}, date: $date, sets: $sets, reps: $reps, intensity: $intensity)';
   }
 }

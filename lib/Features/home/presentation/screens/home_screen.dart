@@ -171,12 +171,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          if (state.isLoading)
-                            const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            ),
+                          Row(
+                            children: [
+                              // Test filter button
+                              IconButton(
+                                onPressed: () {
+                                  print('=== MANUAL TEST ===');
+                                  final cubit = context.read<HomeCubit>();
+                                  cubit.applyFilters(ExerciseFilters(equipment: 'body weight'));
+                                  print('=== END MANUAL TEST ===');
+                                },
+                                icon: const Icon(Icons.filter_alt),
+                                tooltip: 'Test Equipment Filter',
+                              ),
+                              if (state.isLoading)
+                                const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
