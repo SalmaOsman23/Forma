@@ -9,8 +9,6 @@ import 'package:forma/Features/progress/presentation/screens/progress_screen.dar
 import 'package:forma/Features/settings/presentation/screens/settings_screen.dart';
 import 'package:forma/core/components/custom_button_nav_bar.dart';
 import 'package:forma/core/utils/app_assets.dart';
-import 'package:forma/core/utils/app_strings.dart';
-import 'package:forma/core/utils/app_styles.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -57,17 +55,6 @@ class HomeLayoutState extends State<HomeLayout> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: _screens[_selectedIndex], // Display the selected screen
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(
-          AppStrings.forma,
-          style: AppStyles.headlineLarge(context).copyWith(color: Theme.of(context).colorScheme.primary),
-        ),
-       
-      ),
       bottomNavigationBar: CustomBottomNavbar(
         currentIndex: _selectedIndex,
         onTap: onItemTapped,

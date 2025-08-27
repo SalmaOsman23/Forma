@@ -33,42 +33,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+      ),
       backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(12.w),
-                    decoration: BoxDecoration(
-                      color: colorScheme.primary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Icon(
-                      Icons.settings,
-                      color: colorScheme.primary,
-                      size: 24.sp,
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Text(
-                    AppStrings.settings,
-                    style: TextStyle(
-                      fontSize: 28.sp,
-                      fontWeight: FontWeight.bold,
-                      color: colorScheme.onSurface,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
             // Tab Bar
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.only(top: 12.h),
               decoration: BoxDecoration(
                 color: colorScheme.surfaceVariant.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12.r),
