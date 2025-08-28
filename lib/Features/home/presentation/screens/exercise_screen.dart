@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forma/Features/home/presentation/bloc/home_cubit.dart';
-import 'package:forma/Features/home/presentation/bloc/home_state.dart';
+import 'package:forma/Features/home/presentation/bloc/exercises_cubit.dart';
+import 'package:forma/Features/home/presentation/bloc/exercises_state.dart';
 import 'package:forma/Features/home/presentation/widgets/exercise_card.dart';
 import 'package:forma/Features/home/presentation/widgets/exercise_filters_widget.dart';
 import 'package:forma/Features/home/presentation/widgets/exercise_search_bar.dart';
 import 'package:forma/Features/home/presentation/screens/exercise_details_screen.dart';
 import 'package:forma/Features/home/data/models/exercise.dart';
 import 'package:forma/Features/home/data/models/exercise_filters.dart';
+import 'package:forma/core/utils/app_strings.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+
+class ExercisesScreen extends StatefulWidget {
+  const ExercisesScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ExercisesScreen> createState() => _ExercisesScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ExercisesScreenState extends State<ExercisesScreen> {
   @override
   void initState() {
     super.initState();
     // Load initial data when the screen is created
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<HomeCubit>().loadInitialData();
+      context.read<ExercisesCubit>().loadInitialData();
     });
   }
 
@@ -36,15 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onFiltersChanged(ExerciseFilters filters) {
-    context.read<HomeCubit>().applyFilters(filters);
+    context.read<ExercisesCubit>().applyFilters(filters);
   }
 
   void _onClearFilters() {
-    context.read<HomeCubit>().clearFilters();
+    context.read<ExercisesCubit>().clearFilters();
   }
 
   void _onClearSearch() {
-    context.read<HomeCubit>().clearSearch();
+    context.read<ExercisesCubit>().clearSearch();
   }
 
   @override
@@ -58,26 +60,26 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: BlocBuilder<HomeCubit, HomeState>(
+        child: BlocBuilder<ExercisesCubit, ExercisesState>(
           builder: (context, state) {
-            if (state is HomeInitial) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+                         if (state is HomeInitial) {
+               return const Center(
+                 child: CircularProgressIndicator(),
+               );
+             }
 
-            if (state is HomeLoading) {
-              return const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    SizedBox(height: 16),
-                    Text('Loading exercises...'),
-                  ],
-                ),
-              );
-            }
+                         if (state is HomeLoading) {
+               return Center(
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     const CircularProgressIndicator(),
+                     const SizedBox(height: 16),
+                     const Text('Loading exercises...'),
+                   ],
+                 ),
+               );
+             }
 
             if (state is HomeError) {
               return Center(
@@ -87,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Icon(
                       Icons.error_outline,
                       size: 64,
-                      color: Colors.red.shade300,
+                      color: Theme.of(context).colorScheme.error.withOpacity(0.7),
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -95,17 +97,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      state.message,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey.shade600),
-                    ),
+                                         Text(
+                       state.message,
+                       textAlign: TextAlign.center,
+                       style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7)),
+                     ),
                     const SizedBox(height: 24),
                     ElevatedButton(
                       onPressed: () {
-                        context.read<HomeCubit>().loadInitialData();
+                        context.read<ExercisesCubit>().loadInitialData();
                       },
-                      child: const Text('Retry'),
+                      child: Text(AppStrings.retry),
                     ),
                   ],
                 ),
@@ -129,13 +131,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          Text(
-                            'Discover and filter exercises to build your perfect workout',
-                            style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: 16,
-                            ),
-                          ),
+                                                     Text(
+                             'Discover and filter exercises to build your perfect workout',
+                             style: TextStyle(
+                               color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                               fontSize: 16,
+                             ),
+                           ),
                         ],
                       ),
                     ),
@@ -178,12 +180,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          if (state.isLoading)
-                            const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            ),
+                                                     if (state.isLoading)
+                             const SizedBox(
+                               width: 20,
+                               height: 20,
+                               child: CircularProgressIndicator(strokeWidth: 2),
+                             ),
                         ],
                       ),
                     ),
@@ -192,16 +194,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     // Exercise Count
                     if (state.filters?.hasFilters == true)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          '${state.filteredExercises.length} exercises found',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
+                                             Padding(
+                         padding: const EdgeInsets.symmetric(horizontal: 16),
+                         child: Text(
+                           '${state.filteredExercises.length} exercises found',
+                           style: TextStyle(
+                             color: Theme.of(context).textTheme.bodySmall?.color?.withOpacity(0.7),
+                             fontSize: 14,
+                           ),
+                         ),
+                       ),
 
                     const SizedBox(height: 16),
 
@@ -243,22 +245,22 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.filter_list_off,
-              size: 64,
-              color: Colors.grey.shade300,
-            ),
+                         Icon(
+               Icons.filter_list_off,
+               size: 64,
+               color: Theme.of(context).iconTheme.color?.withOpacity(0.4),
+             ),
             const SizedBox(height: 16),
             Text(
               'No exercises found',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Try adjusting your filters or search terms',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade600),
-            ),
+                         Text(
+               'Try adjusting your filters or search terms',
+               textAlign: TextAlign.center,
+               style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7)),
+             ),
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: _onClearFilters,
@@ -273,26 +275,26 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.fitness_center,
-            size: 64,
-            color: Colors.grey.shade300,
-          ),
+                     Icon(
+             Icons.fitness_center,
+             size: 64,
+             color: Theme.of(context).iconTheme.color?.withOpacity(0.4),
+           ),
           const SizedBox(height: 16),
           Text(
             'No exercises available',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 8),
-          Text(
-            'Check your internet connection and try again',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey.shade600),
-          ),
+                     Text(
+             'Check your internet connection and try again',
+             textAlign: TextAlign.center,
+             style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7)),
+           ),
           const SizedBox(height: 24),
           ElevatedButton(
             onPressed: () {
-              context.read<HomeCubit>().loadInitialData();
+              context.read<ExercisesCubit>().loadInitialData();
             },
             child: const Text('Retry'),
           ),

@@ -135,7 +135,9 @@ class _ProgressScreenState extends State<ProgressScreen> {
         ],
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
           : _loggedExercises.isEmpty
               ? _buildEmptyState()
               : _buildProgressContent(),
@@ -285,12 +287,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
           ),
           if (_stats['mostCompletedExercise'] != null) ...[
             const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
+                         Container(
+               padding: const EdgeInsets.all(12),
+               decoration: BoxDecoration(
+                 color: Theme.of(context).cardColor,
+                 borderRadius: BorderRadius.circular(8),
+               ),
               child: Row(
                 children: [
                   Icon(
@@ -350,21 +352,21 @@ class _ProgressScreenState extends State<ProgressScreen> {
     final date = timestamp != null ? DateTime.fromMillisecondsSinceEpoch(timestamp) : DateTime.now();
     final completedCount = exercise['completedCount'] as int? ?? 1;
     
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+         return Container(
+       margin: const EdgeInsets.only(bottom: 12),
+       padding: const EdgeInsets.all(16),
+       decoration: BoxDecoration(
+         color: Theme.of(context).cardColor,
+         borderRadius: BorderRadius.circular(12),
+         border: Border.all(color: Theme.of(context).dividerColor),
+         boxShadow: [
+           BoxShadow(
+             color: Theme.of(context).shadowColor.withOpacity(0.1),
+             blurRadius: 4,
+             offset: const Offset(0, 2),
+           ),
+         ],
+       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

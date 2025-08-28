@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forma/Features/chatbot/presentation/bloc/chatbot_cubit.dart';
 import 'package:forma/Features/chatbot/presentation/screens/chat_bot_screen.dart';
-import 'package:forma/Features/home/presentation/bloc/home_cubit.dart';
-import 'package:forma/Features/home/presentation/screens/home_screen.dart';
+import 'package:forma/Features/home/presentation/bloc/exercises_cubit.dart';
+import 'package:forma/Features/home/presentation/screens/exercise_screen.dart';
 
 import 'package:forma/Features/progress/presentation/screens/progress_screen.dart';
 import 'package:forma/Features/settings/presentation/screens/settings_screen.dart';
@@ -21,8 +21,8 @@ class HomeLayoutState extends State<HomeLayout> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     BlocProvider(
-      create: (context) => HomeCubit(),
-      child: const HomeScreen(),
+      create: (context) => ExercisesCubit(),
+      child: const ExercisesScreen(),
     ),
     const ProgressScreen(),
     BlocProvider(

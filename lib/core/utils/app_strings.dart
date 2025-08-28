@@ -85,6 +85,9 @@ class AppStrings {
   static const String times = "times";
   static const String progressSummary = "Progress Summary";
   static const String exercises = "Exercises";
+  static const String loadingExercises = "Loading exercises...";
+  static const String retry = "Retry";
+
 
   
 }

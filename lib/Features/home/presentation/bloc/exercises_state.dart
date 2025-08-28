@@ -2,18 +2,18 @@ import 'package:equatable/equatable.dart';
 import 'package:forma/Features/home/data/models/exercise.dart';
 import 'package:forma/Features/home/data/models/exercise_filters.dart';
 
-abstract class HomeState extends Equatable {
-  const HomeState();
+abstract class ExercisesState extends Equatable {
+  const ExercisesState();
 
   @override
   List<Object?> get props => [];
 }
 
-class HomeInitial extends HomeState {}
+class HomeInitial extends ExercisesState {}
 
-class HomeLoading extends HomeState {}
+class HomeLoading extends ExercisesState {}
 
-class HomeLoaded extends HomeState {
+class HomeLoaded extends ExercisesState {
   final List<Exercise> exercises;
   final List<Exercise> filteredExercises;
   final ExerciseFilters? filters;
@@ -64,7 +64,7 @@ class HomeLoaded extends HomeState {
       ];
 }
 
-class HomeError extends HomeState {
+class HomeError extends ExercisesState {
   final String message;
 
   const HomeError(this.message);

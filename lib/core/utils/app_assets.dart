@@ -15,7 +15,7 @@ class AppAssets {
   static const String welcomeIllustration = "$baseImage/Welcome-bro.svg";
   static const String splashLogo = "$baseImage/no_background_logo.png";
   static const String noBackgroundLogo = "$baseImage/no_background_logo.png";
-  static const String loadingIcon = "$baseImage/dumbell-animation.gif";
+  static const String loadingIcon = "$baseImage/dumbell animation.json";
 
   
 }

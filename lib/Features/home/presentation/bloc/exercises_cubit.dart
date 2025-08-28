@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forma/Features/home/presentation/bloc/home_state.dart';
+import 'package:forma/Features/home/presentation/bloc/exercises_state.dart';
 import 'package:forma/Features/home/data/models/exercise.dart';
 import 'package:forma/Features/home/data/models/exercise_filters.dart';
 import 'package:forma/Features/chatbot/data/exercise_api_service.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial()) {
+class ExercisesCubit extends Cubit<ExercisesState> {
+  ExercisesCubit() : super(HomeInitial()) {
     // Test the filtering logic on initialization
     testFiltering();
   }
