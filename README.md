@@ -1,16 +1,21 @@
-# forma
+# Forma
 
-A new Flutter project.
+Flutter mobile application that helps users explore exercises, track their workout progress, and interact with a chatbot for fitness guidance.
 
-## Getting Started
+✨ Features  
 
-This project is a starting point for a Flutter application.
+📌 **Exercise Screen**  
+- Displays a list of exercises fetched from the ExerciseDB API.  
+- Exercise details include targeted muscles, instructions, and an option to mark as done.  
 
-A few resources to get you started if this is your first Flutter project:
+📊 **Progress Screen (Activity Logging)**  
+- Logs completed exercises when the user marks them as done.  
+- Displays a history of completed activities for progress tracking.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🤖 **Chatbot**  
+- An integrated chatbot powered by ExerciseDB API.  
+- Answers user queries related to exercises, targeted muscles, and workout details.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+⚙️ **Settings Screen**  
+- Includes a theme switcher (light/dark mode).  
+- Simple and intuitive UI to personalize the app experience.
